@@ -9,33 +9,37 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.faculdadedelta.springpos.model.type.Categoria;
+import br.com.faculdadedelta.springpos.model.type.Sexo;
 
 @Entity
-public class Modelo implements Serializable {
+public class Motorista implements Serializable{
 
-	private static final long serialVersionUID = -4711266343042279026L;
+	private static final long serialVersionUID = -7767200842895173875L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String descricao;
+	private String nome;
+
+	private String cpf;
+
+	private String cnh;
 
 	@Enumerated(EnumType.STRING)
-	private Categoria categoria;
+	private Sexo sexo;
 
-	private Fabricante fabricante;
-
-	public Modelo() {
+	public Motorista() {
 
 	}
 
-	public Modelo(Long id, String descricao, Categoria categoria, Fabricante fabricante) {
+	public Motorista(Long id, String nome, String cpf, String cnh, Sexo sexo) {
+		super();
 		this.id = id;
-		this.descricao = descricao;
-		this.categoria = categoria;
-		this.fabricante = fabricante;
+		this.nome = nome;
+		this.cpf = cpf;
+		this.cnh = cnh;
+		this.sexo = sexo;
 	}
 
 	public Long getId() {
@@ -46,28 +50,36 @@ public class Modelo implements Serializable {
 		this.id = id;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public String getCpf() {
+		return cpf;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
-	public Fabricante getFabricante() {
-		return fabricante;
+	public String getCnh() {
+		return cnh;
 	}
 
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
+	public void setCnh(String cnh) {
+		this.cnh = cnh;
+	}
+
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
 	}
 
 	@Override
@@ -86,7 +98,7 @@ public class Modelo implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Modelo other = (Modelo) obj;
+		Motorista other = (Motorista) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

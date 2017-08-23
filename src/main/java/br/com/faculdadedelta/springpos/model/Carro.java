@@ -3,10 +3,13 @@ package br.com.faculdadedelta.springpos.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class Carro implements Serializable {
@@ -21,6 +24,8 @@ public class Carro implements Serializable {
 
 	private String chassi;
 
+	@Column(nullable = false, precision = 10, scale = 2)
+	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valorDaDiaria;
 
 	private Modelo modelo;

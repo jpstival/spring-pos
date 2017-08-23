@@ -1,4 +1,4 @@
-package br.com.faculdadedelta.springpos.model;
+package br.com.faculdadedelta.springpos.model.type;
 
 public enum Categoria {
 
