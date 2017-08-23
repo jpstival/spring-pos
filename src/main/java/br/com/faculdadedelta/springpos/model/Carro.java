@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -28,6 +30,8 @@ public class Carro implements Serializable {
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal valorDaDiaria;
 
+	@ManyToOne
+	@JoinColumn(name="id_modelo", referencedColumnName="id")
 	private Modelo modelo;
 
 	public Carro() {

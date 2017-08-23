@@ -8,6 +8,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import br.com.faculdadedelta.springpos.model.type.Categoria;
 
@@ -25,6 +27,8 @@ public class Modelo implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Categoria categoria;
 
+	@ManyToOne
+	@JoinColumn(name="id_fabricante", referencedColumnName="id")
 	private Fabricante fabricante;
 
 	public Modelo() {

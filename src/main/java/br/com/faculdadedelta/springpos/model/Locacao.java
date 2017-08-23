@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -35,9 +37,13 @@ public class Locacao implements Serializable {
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataDevolucao;
-
+	
+	@ManyToOne
+	@JoinColumn(name="id_motorista", referencedColumnName="id")
 	private Motorista motorista;
 
+	@ManyToOne
+	@JoinColumn(name="id_carro", referencedColumnName="id")
 	private Carro carro;
 
 	public Locacao() {
