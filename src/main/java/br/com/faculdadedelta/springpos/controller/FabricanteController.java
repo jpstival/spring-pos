@@ -13,7 +13,7 @@ import br.com.faculdadedelta.springpos.dao.FabricanteRepository;
 import br.com.faculdadedelta.springpos.model.Fabricante;
 
 @Controller
-@RequestMapping("/fabricante")
+@RequestMapping("/fabricantes")
 public class FabricanteController {
 	
     @Autowired
@@ -27,8 +27,8 @@ public class FabricanteController {
         // return new ModelAndView("produto");
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public ModelAndView salvar(@Validated Fabricante produto, 
+    @RequestMapping(value="/fabricantes", method = RequestMethod.POST)
+    public ModelAndView salvar(@Validated Fabricante fabricante, 
             Errors errors,
             RedirectAttributes redirectAttributes) {
         
@@ -36,12 +36,12 @@ public class FabricanteController {
             return new ModelAndView("cadastro_fabricante");
         }
         
-        this.repository.save(produto);
+        this.repository.save(fabricante);
         
         redirectAttributes.addFlashAttribute("mensagem",
                 "Fabricante salvo com sucesso!");
         
-        return new ModelAndView("redirect:/fabricante/novo");
+        return new ModelAndView("redirect:/fabricantes/novo");
     }
 
 }
