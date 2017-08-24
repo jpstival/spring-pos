@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 @Entity
 public class Fabricante implements Serializable {
 
@@ -16,8 +18,10 @@ public class Fabricante implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotBlank(message = "O campo nome não pode ser vazio!")
 	private String nome;
 
+	@NotBlank(message = "O campo descrição não pode ser vazio!")
 	private String descricao;
 	
 	
