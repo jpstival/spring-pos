@@ -3,16 +3,16 @@
     xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/css/bootstrap.css}"/>
-<link rel="stylesheet" th:href="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/css/bootstrap.min.css}"/>
-<link rel="stylesheet" th:href="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/css/bootstrap-theme.min.css}"/>
-<link rel="stylesheet" th:href="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/css/index.css}"/>
-<link rel="stylesheet" th:href="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/css/forms.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap-theme.min.css}"/>
+<link rel="stylesheet" th:href="@{/css/index.css}"/>
+<link rel="stylesheet" th:href="@{/css/forms.css}"/>
 <title>Cadastro de Fabricante</title>
 </head>
 <body>
-  <script th:src="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/js/jquery-2.1.4.min.js}"></script>
-  <script th:src="@{C:/eclipse/workspace/spring-pos/src/main/resources/static/js/bootstrap.min.js}"></script>
+  <script th:src="@{/js/jquery-2.1.4.min.js}"></script>
+  <script th:src="@{/js/bootstrap.min.js}"></script>
  <div th:include="header :: menubar"></div>
     <h1>Cadastro de Fabricante</h1>
     <form action="/fabricante" method="POST" th:object="${fabricante}">
