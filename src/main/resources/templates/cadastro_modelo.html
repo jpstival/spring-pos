@@ -1,98 +1,102 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
-<link href="/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="/css/navbar.css" rel="stylesheet"/>
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/navbar.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Cadastro de Modelo</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Never expand</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="true" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+<div style="margin-left: 10%; margin-right: 5%"
+	class="alert alert-info" th:include="header :: header"></div>
+<!-- 	<div style="margin-left: 10%; margin-right: 10%" -->
+<!-- 		class="alert alert-info"> -->
+<!-- 		<ul class="nav nav-pills"> -->
+<!-- 			<li role="presentation" class="active"><a href="#">Home</a></li> -->
+<!-- 			<li role="presentation" class="glyphicons glyphicons-plus-sign"><a -->
+<!-- 				th:href="@{/locacoes/novo}">Locação</a></li> -->
+<!-- 			<li role="presentation" class="dropdown"><a -->
+<!-- 				class="dropdown-toggle" data-toggle="dropdown" href="#" -->
+<!-- 				role="button" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 					Dropdown </a> -->
+<!-- 				<ul class="dropdown-menu"> -->
+<!-- 					<li><a href="#">Action</a></li> -->
+<!-- 					<li><a href="#">Another action</a></li> -->
+<!-- 					<li><a href="#">Something else here</a></li> -->
+<!-- 					<li role="separator" class="divider"></li> -->
+<!-- 					<li><a href="#">Separated link</a></li> -->
+<!-- 					<li role="separator" class="divider"></li> -->
+<!-- 					<li><a href="#">One more separated link</a></li> -->
+<!-- 				</ul></li> -->
+<!-- 			<li role="presentation" class="dropdown"><a -->
+<!-- 				class="dropdown-toggle" data-toggle="dropdown" href="#" -->
+<!-- 				role="button" aria-haspopup="true" aria-expanded="false"> -->
+<!-- 					Dropdown </a> -->
+<!-- 				<ul class="dropdown-menu"> -->
+<!-- 					<li><a href="#">Action</a></li> -->
+<!-- 					<li><a href="#">Another action</a></li> -->
+<!-- 					<li><a href="#">Something else here</a></li> -->
+<!-- 					<li role="separator" class="divider"></li> -->
+<!-- 					<li><a href="#">Separated link</a></li> -->
+<!-- 					<li role="separator" class="divider"></li> -->
+<!-- 					<li><a href="#">One more separated link</a></li> -->
+<!-- 				</ul></li> -->
+<!-- 		</ul> -->
+<!-- 	</div> -->
+	<div class="container">
+		<h1 style="color: rgb(101, 155, 242); margin-left: 2%;">Cadastro
+			de Modelo</h1>
+		<div class="container borde">
+			<br />
+			<form class="container" action="modelos" method="POST"
+				th:object="${modelo}">
 
-      <div class="navbar-collapse collapse show" id="navbarsExample01" style="">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </div>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-          <input class="form-control" type="text" placeholder="Search" aria-label="Search"/>
-        </form>
-      </div>
-    </nav>
-<div class="container">
-    <h1>Cadastro de Modelo</h1>
- <div class="container borde">
+				<div class="alert alert-danger" role="alert"
+					th:if="${#fields.hasAnyErrors()}">
+					<div th:each="detailedError : ${#fields.detailedErrors()}">
+						<span th:text="${detailedError.message}"></span>
+					</div>
+				</div>
 
-<!-- <a th:href="@{/produtos}" >Lista produtos</a> -->
+				<div class="alert alert-success" role="alert"
+					th:if="${!#strings.isEmpty(mensagem)}">
+					<span th:text="${mensagem}"></span>
+				</div>
 
-<br />
-<br />
+				<br /> <input type="hidden" th:field="*{id}" />
 
-<form class="container" action="modelos" method="POST" th:object="${modelo}">
+				<div class="form-group">
+					<label for="nome">Descrição:</label> <input class="form-control"
+						type="text" th:field="*{descricao}" />
+				</div>
 
-<div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
-	<div th:each="detailedError : ${#fields.detailedErrors()}" >
-		<span th:text="${detailedError.message}"></span>
+				<div class="form-group">
+					<label style="width: 10%;" for="categoria">Categoria:</label> <select
+						style="width: 30%;" class="custom-select" th:field="*{categoria}">
+						<option th:each="categoria : ${todasCategorias}"
+							th:text="${categoria.descricao}" th:value="${categoria}"></option>
+					</select>
+				</div>
+
+				<div class="form-group">
+					<label style="width: 10%;" for="categoria">Fabricante:</label> <select
+						style="width: 30%;" class="custom-select" th:field="*{fabricante}">
+						<option th:each="fabricante : ${todosFabricantes}"
+							th:text="${fabricante.nome}" th:value="${fabricante.id}"></option>
+					</select>
+				</div>
+				<br />
+				<button style="width: 10%;" class="btn btn-primary" type="submit">Salvar</button>
+
+			</form>
+
+		</div>
 	</div>
-</div>
-
-<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
-  <span th:text="${mensagem}"></span>
-</div>
-
-<br />
-
-<input type="hidden" th:field="*{id}" />
-
-<div class="form-group">
-<label for="nome">Descrição:</label>
-<input class="form-control" type="text" th:field="*{descricao}" />
-</div>
-
-<div class="form-group">
-<label style="width: 10%;" for="categoria">Categoria:</label>
-<select style="width: 30%;" class="custom-select" th:field="*{categoria}"> 
-	<option th:each="categoria : ${todasCategorias}" 
-	  th:text="${categoria.descricao}" 
-	  th:value="${categoria}"></option>
-</select>
-</div>
-
-<div class="form-group">
-<label style="width: 10%;" for="categoria">Fabricante:</label>
-<select style="width: 30%;" class="custom-select" th:field="*{fabricante}"> 
-	<option th:each="fabricante : ${todosFabricantes}" 
-	  th:text="${fabricante.nome}" 
-	  th:value="${fabricante.id}"></option>
-</select>
-</div>
-
-<button style="width: 10%;" class="btn btn-primary" type="submit">Salvar</button>
-
-</form>
-
-</div>
-</div>
 </body>
 </html>

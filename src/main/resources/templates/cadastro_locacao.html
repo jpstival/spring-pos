@@ -4,16 +4,38 @@
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/navbar.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+<script type="text/javascript"
+	src="/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',                
+                language: 'pt-BR'
+            });
+        });
+
+    </script>
 <title>Cadastro de Locações</title>
 </head>
 <body>
+	<div style="margin-left: 10%; margin-right: 5%"
+		class="alert alert-info" th:include="header :: header"></div>
 	<div class="container">
-		<h1>Cadastro de Locações</h1>
+		<h1 style="color: rgb(101, 155, 242); margin-left: 2%;">Cadastro
+			de Locações</h1>
 		<div class="container">
 
-			<!-- <a th:href="@{/locacoes}" >Lista produtos</a> -->
-
-			<br /> <br />
+			<br />
 
 			<form class="container" action="locacoes" method="POST"
 				th:object="${locacao}">
@@ -33,18 +55,18 @@
 				<br /> <input type="hidden" th:field="*{id}" />
 
 				<div class="form-group">
-					<label for="nome">Locação:</label> <input class="form-control"
+					<label for="nome">Locação:</label> <input class="form-control datepicker"
 						type="text" th:field="*{dataLocacao}" />
 				</div>
 
 				<div class="form-group">
-					<label for="valor">Devolução:</label> <input class="form-control"
+					<label for="valor">Devolução:</label> <input class="form-control datepicker"
 						type="text" th:field="*{dataDevolucao}" />
 				</div>
 
 				<div class="form-group">
-					<label for="valor">Valor total:</label> <input
-						class="form-control" type="text" th:field="*{valorTotal}" />
+					<label for="valor">Valor total:</label> <input class="form-control"
+						type="text" th:field="*{valorTotal}" />
 				</div>
 
 				<div class="form-group">
@@ -54,19 +76,18 @@
 							th:text="${motorista.nome}" th:value="${motorista.id}"></option>
 					</select>
 				</div>
-				
+
 				<div class="form-group">
 					<label style="width: 10%;" for="carro">Carro:</label> <select
 						style="width: 30%;" class="custom-select" th:field="*{carro}">
 						<option th:each="carro : ${todosCarros}"
-							th:text="${carro.modelo.descricao}+' - '+${carro.placa}" th:value="${carro.id}"></option>
+							th:text="${carro.modelo.descricao}+' - '+${carro.placa}"
+							th:value="${carro.id}"></option>
 					</select>
 				</div>
-				
-				<button class="btn btn-primary" type="submit">Salvar</button>
-
+				<br />
+				<button style="width: 10%;" class="btn btn-primary" type="submit">Salvar</button>
 			</form>
-
 		</div>
 	</div>
 </body>
