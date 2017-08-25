@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
@@ -28,14 +29,17 @@ public class Locacao implements Serializable {
 
 	@Column(nullable = false, precision = 10, scale = 2)
 	@NumberFormat(pattern = "#,##0.00")
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private BigDecimal valorTotal;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private Date dataLocacao;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private Date dataDevolucao;
 	
 	@ManyToOne

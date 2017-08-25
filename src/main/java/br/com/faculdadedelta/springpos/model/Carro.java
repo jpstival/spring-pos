@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.NumberFormat;
 
@@ -22,12 +23,15 @@ public class Carro implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private String placa;
 
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private String chassi;
 
 	@Column(nullable = false, precision = 10, scale = 2)
 	@NumberFormat(pattern = "#,##0.00")
+	@NotNull(message = "O campo valor não pode ser vazio!")
 	private BigDecimal valorDaDiaria;
 
 	@ManyToOne
