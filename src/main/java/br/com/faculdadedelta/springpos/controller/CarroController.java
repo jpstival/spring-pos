@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -35,11 +36,11 @@ public class CarroController {
 		// return new ModelAndView("produto");
 	}
 
-	@RequestMapping(value = "/carros", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView salvar(@Validated Carro carro, Errors errors, RedirectAttributes redirectAttributes) {
 
 		if (errors.hasErrors()) {
-			return new ModelAndView("cadastro_carros");
+			return new ModelAndView("cadastro_carro");
 		}
 
 		this.repository.save(carro);
@@ -53,5 +54,37 @@ public class CarroController {
 	public List<Modelo> todosModelos() {
 		List<Modelo> modelos = this.mr.findAll();
 		return modelos;
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView listar() {
+		ModelAndView mv = new ModelAndView("lista_carros");
+		List<Carro> carros = repository.findAll();
+
+		mv.addObject("carros", carros);
+		return mv;
+	}
+
+	@RequestMapping(value = "/editar/{id}", 
+			method = RequestMethod.GET)
+	public ModelAndView editar(@PathVariable("id") Long id) {
+		Carro carro = this.repository.findOne(id);
+		ModelAndView mv = new ModelAndView("cadastro_carro");
+		mv.addObject(carro);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/excluir/{id}", 
+			method= RequestMethod.GET)
+	public ModelAndView excluir(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+		try{
+			this.repository.delete(id);
+	        redirectAttributes.addFlashAttribute("sucesso",
+	                "Carro excluido com sucesso!");
+		}catch (Exception e) {
+	        redirectAttributes.addFlashAttribute("falha",
+	                "Não é possivel excluir esse Carro!");
+		}
+		return new ModelAndView("redirect:/carros");
 	}
 }

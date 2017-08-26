@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import br.com.faculdadedelta.springpos.model.type.Sexo;
 
 @Entity
@@ -21,13 +23,13 @@ public class Motorista implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo valor não pode ser vazio!")
 	private String nome;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo valor não pode ser vazio!")
 	private String cpf;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo valor não pode ser vazio!")
 	private String cnh;
 
 	@Enumerated(EnumType.STRING)

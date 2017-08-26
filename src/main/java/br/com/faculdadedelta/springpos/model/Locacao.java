@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.NumberFormat;
 
@@ -34,12 +35,12 @@ public class Locacao implements Serializable {
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	//@NotBlank(message = "O campo data de locação não pode ser vazio!")
 	private Date dataLocacao;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	//@NotBlank(message = "O campo data de devolução não pode ser vazio!")
 	private Date dataDevolucao;
 	
 	@ManyToOne

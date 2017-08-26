@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import br.com.faculdadedelta.springpos.model.type.Categoria;
 
 @Entity
@@ -23,7 +25,7 @@ public class Modelo implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo descrição não pode ser vazio!")
 	private String descricao;
 
 	@Enumerated(EnumType.STRING)

@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.NumberFormat;
 
 @Entity
@@ -23,10 +24,10 @@ public class Carro implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo placa não pode ser vazio!")
 	private String placa;
 
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	@NotBlank(message = "O campo chassi não pode ser vazio!")
 	private String chassi;
 
 	@Column(nullable = false, precision = 10, scale = 2)
@@ -36,6 +37,7 @@ public class Carro implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="id_modelo", referencedColumnName="id")
+	@NotNull(message = "O modelo não pode ser vazio!")
 	private Modelo modelo;
 
 	public Carro() {
