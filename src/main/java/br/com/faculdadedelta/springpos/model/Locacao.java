@@ -30,7 +30,7 @@ public class Locacao implements Serializable {
 
 	@Column(nullable = false, precision = 10, scale = 2)
 	@NumberFormat(pattern = "#,##0.00")
-	@NotNull(message = "O campo valor não pode ser vazio!")
+	//@NotNull(message = "O campo valor não pode ser vazio!")
 	private BigDecimal valorTotal;
 
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -45,10 +45,12 @@ public class Locacao implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="id_motorista", referencedColumnName="id")
+	@NotNull(message = "Selecione o Motorista!")
 	private Motorista motorista;
 
 	@ManyToOne
 	@JoinColumn(name="id_carro", referencedColumnName="id")
+	@NotNull(message = "Selecione o Carro!")
 	private Carro carro;
 
 	public Locacao() {
@@ -77,8 +79,11 @@ public class Locacao implements Serializable {
 		return valorTotal;
 	}
 
-	public void setValorTotal(BigDecimal valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setValorTotal(Locacao locacao) {
+		long dias = (locacao.getDataDevolucao().getTime() -locacao.getDataLocacao().getTime()) + 3600000;
+		dias = dias / 86400000L;
+		BigDecimal days = new BigDecimal(dias);
+		this.valorTotal = locacao.getCarro().getValorDaDiaria().multiply(days);
 	}
 
 	public Date getDataLocacao() {

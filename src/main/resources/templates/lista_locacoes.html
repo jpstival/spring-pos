@@ -51,11 +51,11 @@
 							<td th:text="${locacao.carro.modelo.descricao}"></td>
 							<td th:text="${locacao.carro.modelo.categoria}"></td>
 							<td th:text="${locacao.carro.modelo.fabricante.nome}"></td>
-							<td th:text="${locacao.carro.valorDaDiaria}"></td>
-							<td th:text="${locacao.dataLocacao}"></td>
-							<td th:text="${locacao.dataDevolucao}"></td>
-							<td th:text="${locacao.valorTotal}"></td>
-							<td><a class="btn btn-primary"
+							<td th:text="${{locacao.carro.valorDaDiaria}}"></td>
+							<td th:text="${{locacao.dataLocacao}}"></td>
+							<td th:text="${{locacao.dataDevolucao}}"></td>
+							<td th:text="${{locacao.valorTotal}}"></td>
+							<td align="center"><a class="btn btn-primary"
 								th:href="@{/locacoes/editar/{id}(id=${locacao.id})}">Editar</a>
 								<a class="btn btn-danger"
 								th:href="@{/locacoes/excluir/{id}(id=${locacao.id})}">Excluir</a>

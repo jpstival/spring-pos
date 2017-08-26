@@ -1,6 +1,5 @@
 package br.com.faculdadedelta.springpos.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import br.com.faculdadedelta.springpos.dao.CarroRepository;
 import br.com.faculdadedelta.springpos.dao.LocacaoRepository;
 import br.com.faculdadedelta.springpos.dao.MotoristaRepository;
 import br.com.faculdadedelta.springpos.model.Carro;
-import br.com.faculdadedelta.springpos.model.Fabricante;
 import br.com.faculdadedelta.springpos.model.Locacao;
 import br.com.faculdadedelta.springpos.model.Motorista;
 
@@ -49,6 +47,8 @@ public class LocacaoController {
 			return new ModelAndView("cadastro_locacao");
 		}
 
+		locacao.setValorTotal(locacao);
+		
 		this.repository.save(locacao);
 
 		redirectAttributes.addFlashAttribute("mensagem", "Locação salvo com sucesso!");

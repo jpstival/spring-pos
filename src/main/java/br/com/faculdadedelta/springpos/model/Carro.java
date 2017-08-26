@@ -37,7 +37,7 @@ public class Carro implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="id_modelo", referencedColumnName="id")
-	@NotNull(message = "O modelo não pode ser vazio!")
+	@NotNull(message = "Selecione o Modelo!")
 	private Modelo modelo;
 
 	public Carro() {

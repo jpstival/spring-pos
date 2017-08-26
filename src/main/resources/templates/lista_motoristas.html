@@ -47,7 +47,7 @@
 							<td th:text="${motorista.sexo}"></td>
 							<td th:text="${motorista.cpf}"></td>
 							<td th:text="${motorista.cnh}"></td>
-							<td><a class="btn btn-primary"
+							<td align="center"><a class="btn btn-primary"
 								th:href="@{/motoristas/editar/{id}(id=${motorista.id})}">Editar</a>
 								<a class="btn btn-danger"
 								th:href="@{/motoristas/excluir/{id}(id=${motorista.id})}">Excluir</a>
@@ -58,6 +58,7 @@
 			</div>
 			<a style="width: 20%;" class="btn btn-primary" th:href="@{/motoristas/novo}">Novo Motorista</a>
 		</div>
+		<br/>
 	</div>
 </body>
 </html>

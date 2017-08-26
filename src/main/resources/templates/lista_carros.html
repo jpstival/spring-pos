@@ -50,7 +50,7 @@
 							<td th:text="${carro.modelo.fabricante.nome}"></td>
 							<td th:text="${carro.placa}"></td>
 							<td th:text="${carro.chassi}"></td>
-							<td th:text="${carro.valorDaDiaria}"></td>
+							<td th:text="${{carro.valorDaDiaria}}"></td>
 							<td><a class="btn btn-primary"
 								th:href="@{/carros/editar/{id}(id=${carro.id})}">Editar</a>
 								<a class="btn btn-danger"

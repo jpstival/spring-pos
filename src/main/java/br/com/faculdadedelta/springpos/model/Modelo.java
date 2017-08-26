@@ -33,6 +33,7 @@ public class Modelo implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name="id_fabricante", referencedColumnName="id")
+	@NotNull(message="Selecione o Fabricante.")
 	private Fabricante fabricante;
 
 	public Modelo() {
