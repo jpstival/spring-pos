@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+ 
+<head>
+<meta charset="UTF-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/navbar.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+.glyphicon {
+	margin-right: 5px;
+}
+</style>
+</head>
+<body>
+
+<header layout:include="header">
+	Cabeçalho
+</header>
+
+<br />
+
+<section layout:fragment="conteudo">
+	Conteudo
+</section>
+
+<br />
+
+<footer class="card-footer text-muted text-center">
+	<p>Pós Full stack - Spring MVC</p>
+</footer>
+
+</body>
+</html>

@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
 <head>
-<meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
-<link href="/css/navbar.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Home</title>
 </head>
-<body>
-	<div style="margin-left: 10%; margin-right: 5%"
-		class="alert alert-info" th:include="header :: header"></div>
+<section layout:fragment="conteudo">
 	<div class="container">
+	<br/>
+	<br/>
 		<div class="container">
-		<div style="margin-left: 20%; margin-top: 40px;">
-			<ul class="nav nav-pills">
-				<li role="presentation" class="active"><a href="/locacoes/novo">Nova Locação</a></li>
-				<li role="presentation" class="active"><a href="/carros/novo">Novo Carro</a></li>
-				<li role="presentation" class="active"><a href="/motoristas/novo">Novo Motorista</a></li>
-				<li role="presentation" class="active"><a href="/modelos/novo">Novo Modelo</a></li>
-				<li role="presentation" class="active"><a href="/fabricantes/novo">Novo Fabricante</a></li>
-			</ul>
-			<br/>
-			<br/>
-			<ul class="nav nav-pills" >
-				<li role="presentation" ><a href="/locacoes">Listar Locações</a></li>
-				<li role="presentation" ><a href="/carros">Listar Carros</a></li>
-				<li role="presentation" ><a href="/motoristas">Listar Motoristas</a></li>
-				<li role="presentation" ><a href="/modelos">Listar Modelos</a></li>
-				<li role="presentation" ><a href="/fabricantes">Listar Fabricantes</a></li>
-			</ul>
+				<ul class="nav nav-pills">
+					<li role="presentation" class="active" style="text-align: center;"><a
+						href="/locacoes/novo" >Nova Locação</a></li>
+					<li role="presentation" class="active" style="text-align: center;"><a href="/carros/novo">Novo
+							Carro</a></li>
+					<li role="presentation" class="active" style="text-align: center;"><a
+						href="/motoristas/novo">Novo Motorista</a></li>
+					<li role="presentation" class="active" style="text-align: center;"><a href="/modelos/novo">Novo
+							Modelo</a></li>
+					<li role="presentation" class="active" style="text-align: center;"><a
+						href="/fabricantes/novo">Novo Fabricante</a></li>
+				</ul>
+				<br /> <br />
+				<ul class="nav nav-pills">
+					<li role="presentation"><a href="/locacoes">Listar
+							Locações</a></li>
+					<li role="presentation"><a href="/carros">Listar Carros</a></li>
+					<li role="presentation"><a href="/motoristas">Listar
+							Motoristas</a></li>
+					<li role="presentation"><a href="/modelos">Listar Modelos</a></li>
+					<li role="presentation"><a href="/fabricantes">Listar
+							Fabricantes</a></li>
+				</ul>
 			</div>
 		</div>
-	</div>
-</body>
+</section>
 </html>

@@ -1,13 +1,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-<div th:fragment="header">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
 	<ul class="nav nav-pills">
-		<li role="presentation" class="active"><a href="/">Home</a></li>
-		<li role="presentation" class="glyphicons glyphicons-plus-sign"><a
-			th:href="@{/locacoes/novo}">Locação</a></li>
+		<li role="presentation" class="active"><a href="/"><span class="glyphicon glyphicon-th">
+								</span>Home</a></li>
+		<li role="presentation"><a
+			th:href="@{/locacoes/novo}"><span class="glyphicon glyphicon-usd">
+								</span>Locação</a></li>
 		<li role="presentation" class="dropdown"><a
 			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-			aria-haspopup="true" aria-expanded="false"> Cadastrar </a>
+			aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-plus"></span>
+								Cadastrar </a>
 			<ul class="dropdown-menu">
 				<li><a th:href="@{/carros/novo}">Carro</a></li>
 				<li><a th:href="@{/modelos/novo}">Modelo</a></li>
@@ -17,7 +22,7 @@
 			</ul></li>
 		<li role="presentation" class="dropdown"><a
 			class="dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-			aria-haspopup="true" aria-expanded="false"> Listar </a>
+			aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Listar </a>
 			<ul class="dropdown-menu">
 				<li><a th:href="@{/locacoes}">Locações</a></li>
 				<li role="separator" class="divider"></li>
@@ -28,5 +33,5 @@
 				<li><a th:href="@{/motoristas}">Motoristas</a></li>
 			</ul></li>
 	</ul>
-</div>
+</nav>
 </html>

@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
-<link href="/css/navbar.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Cadastro de Fabricante</title>
 </head>
-<body>
-	<div style="margin-left: 10%; margin-right: 5%"
-		class="alert alert-info" th:include="header :: header"></div>
+<section layout:fragment="conteudo">
 	<div class="container">
 		<h1 style="color: rgb(101, 155, 242); margin-left: 2%;">Cadastro
 			de Fabricante</h1>
@@ -51,11 +44,15 @@
 						type="text" th:field="*{descricao}" />
 				</div>
 				<br />
-				<button style="width: 10%;" class="btn btn-primary" type="submit">Salvar</button>
-<a style="width: 10%;" class="btn btn-primary" th:href="@{/fabricantes}">Fabricantes</a>
+				<button style="width: 10%;" class="btn btn-primary" type="submit">
+					<span class="glyphicon glyphicon-ok"></span>Salvar
+				</button>
+				<a style="width: 10%;" class="btn btn-primary"
+					th:href="@{/fabricantes}"><span
+					class="glyphicon glyphicon-list"></span>Fabricantes</a>
 			</form>
 
 		</div>
 	</div>
-</body>
+</section>
 </html>
