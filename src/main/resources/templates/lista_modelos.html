@@ -1,20 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="layoutPadrao">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" th:href="@{/css/bootstrap.css}" />
-<link href="/css/bootstrap.min.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>Lista de Modelos</title>
 </head>
-<body>
-	<div style="margin-left: 10%; margin-right: 5%"
-		class="alert alert-info" th:include="header :: header"></div>
-	<div class="container">
+<section layout:fragment="conteudo">
+<div class="container">
 		<h1 style="color: rgb(101, 155, 242); margin-left: 2%;">Lista de
 			modelos</h1>
 
@@ -54,8 +48,8 @@
 					</tbody>
 				</table>
 			</div>
-			<a style="width: 20%;" class="btn btn-primary" th:href="@{/modelos/novo}">Novo Modelo</a>
+			<a style="width: 20%;" class="btn btn-primary" th:href="@{/modelos/novo}"><span class="glyphicon glyphicon-plus-sign"></span>Novo Modelo</a>
 		</div>
-	</div>
-</body>
+		</div>
+</section>
 </html>
