@@ -15,11 +15,11 @@
 		<div class="container">
 			<br />
 			<div class="alert alert-success" role="alert"
-				th:if="${!#strings.isEmpty(sucesso)}">
+				th:if="${!#strings.isEmpty(sucesso)}"><span class="glyphicon glyphicon-thumbs-up"></span>
 				<span th:text="${sucesso}"></span>
 			</div>
 			<div class="alert alert-danger" role="alert"
-				th:if="${!#strings.isEmpty(falha)}">
+				th:if="${!#strings.isEmpty(falha)}"><span class="glyphicon glyphicon-thumbs-down"></span>
 				<span th:text="${falha}"></span>
 			</div>
 			<div class="table-responsive">
@@ -45,16 +45,19 @@
 							<td th:text="${carro.placa}"></td>
 							<td th:text="${carro.chassi}"></td>
 							<td th:text="${{carro.valorDaDiaria}}"></td>
-							<td><a class="btn btn-primary"
-								th:href="@{/carros/editar/{id}(id=${carro.id})}">Editar</a> <a
+							<td align="center"><a class="btn btn-primary"
+								th:href="@{/carros/editar/{id}(id=${carro.id})}"><span
+									class="glyphicon glyphicon-pencil"></span>Editar</a> <a
 								class="btn btn-danger"
-								th:href="@{/carros/excluir/{id}(id=${carro.id})}">Excluir</a></td>
+								th:href="@{/carros/excluir/{id}(id=${carro.id})}"><span
+									class="glyphicon glyphicon-remove"></span>Excluir</a></td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<a style="width: 20%;" class="btn btn-primary"
-				th:href="@{/carros/novo}"><span class="glyphicon glyphicon-plus-sign"></span>Novo Carro</a>
+				th:href="@{/carros/novo}"><span
+				class="glyphicon glyphicon-plus-sign"></span>Novo Carro</a>
 		</div>
 	</div>
 </section>

@@ -64,7 +64,7 @@ public class MotoristaController {
 			method = RequestMethod.GET)
 	public ModelAndView editar(@PathVariable("id") Long id) {
 		Motorista motorista = this.repository.findOne(id);
-		ModelAndView mv = new ModelAndView("cadastro_motoristas");
+		ModelAndView mv = new ModelAndView("cadastro_motorista");
 		mv.addObject(motorista);
 		return mv;
 	}
